@@ -1,9 +1,8 @@
 package itmo.ru.infosec.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.HtmlUtils;
-import itmo.ru.infosec.entity.ProductModel;
+import itmo.ru.infosec.entity.Product;
 import itmo.ru.infosec.repository.ProductRepository;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<ProductModel> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepository.findAll().stream().peek(
                 it -> it.setData(HtmlUtils.htmlEscape(it.getData()))
         ).toList();

@@ -1,22 +1,21 @@
 package itmo.ru.infosec.controller;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import itmo.ru.infosec.dto.CredentialsDto;
-import itmo.ru.infosec.service.AuthService;
+import itmo.ru.infosec.service.UserService;
 
 @RestController
-public class AuthController {
-    public AuthController(AuthService authService) {
+public class UserController {
+    public UserController(UserService authService) {
         this.authService = authService;
     }
 
-    private final AuthService authService;
+    private final UserService authService;
 
     @PostMapping("/auth/register")
     @ResponseStatus(HttpStatus.CREATED)

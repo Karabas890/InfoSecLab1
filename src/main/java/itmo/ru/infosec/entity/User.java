@@ -1,13 +1,10 @@
 package itmo.ru.infosec.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Table(name = "auth_table")
-public class AuthModel {
+@Table(name = "users")
+public class User {
     public String getLogin() {
         return login;
     }
@@ -15,9 +12,11 @@ public class AuthModel {
     public void setLogin(String login) {
         this.login = login;
     }
-
     @Id
-    String login;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(unique = true, nullable = false)
+    private String login;
 
     public String getPassword() {
         return password;
@@ -26,13 +25,13 @@ public class AuthModel {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    @Column(nullable = false)
     String password;
 
-    public AuthModel() {
+    public User() {
     }
 
-    public AuthModel(String login, String password) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }

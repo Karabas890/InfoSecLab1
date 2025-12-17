@@ -3,19 +3,19 @@ package itmo.ru.infosec.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "product_table")
-public class ProductModel {
-    public String getId() {
+@Table(name = "products")
+public class Product {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id;
+    Long id;
 
     public String getData() {
         return data;
@@ -27,6 +27,6 @@ public class ProductModel {
 
     String data;
 
-    public ProductModel() {
+    public Product() {
     }
 }
